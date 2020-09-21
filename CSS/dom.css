@@ -1,0 +1,64 @@
+:root{
+    --yellow-color : #f7df1e;
+    --dark-color: #222;
+}
+
+.link__dom{
+    background-color: #f7df1e;
+    color: #222222;
+}
+
+.cards{
+    border: thin solid var(--dark-color);
+    padding: 1rem;
+}
+
+.card{
+    display: inline-block;
+    background-color: var(--dark-color);
+    color: var(--yellow-color);
+}
+
+.card figcaption{
+    padding: 1rem;
+    text-align: center;
+}
+
+.rotate-45{
+    transform: rotate(45deg);
+    background-color: red;
+}
+
+.rotate-135{
+    transform: rotate(135deg);
+}
+
+.opacity{
+    opacity: .8;
+}
+
+.sepia{
+    filter: sepia(1);
+}
+
+.html{
+    background-color: blue;
+}
+
+.eventos__flujo div{
+    padding: 4rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.uno{
+    background-color: yellow;
+}
+
+.dos{
+    background-color: gold;
+}
+
+.tres{
+    background-color: lightyellow;
+}

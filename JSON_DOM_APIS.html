@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./CSS/dom.css">
+  <title>JSON Y DOM</title>
+</head>
+
+<body>
+  <h1>JSON, DOM Y WEB API´S</h1>
+
+  <h1>WEB API´s</h1>
+  <h2>Dom : Document Object Model</h2>
+  <h2>BOM : Browser Object Model</h2>
+  <h2>CSSOM : CSS Object Model</h2>
+  <ul>
+    <li>Eventos</li>
+    <li>Forms</li>
+    <li>AJAX - Fetch</li>
+    <li>History</li>
+    <li>Web Storage</li>
+    <li>Geo location</li>
+    <li>Drag and Drop</li>
+    <li>Indexed DB</li>
+    <li>Canvas</li>
+    <li>Match Media </li>
+    <li>etc....</li>
+  </ul>
+  <br>
+  <hr></br>
+  <h3>Manejo del DOM</h3>
+  <p id="que-es">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore aliquid placeat quibusdam architecto.
+    Vero sed nostrum tempora! Et, consequatur! Magnam dicta commodi non mollitia odit vel voluptatum esse iste vero.
+  </p>
+  <nav id="menu">
+    <ul>
+      <li><a href="#">Seccion 1</a></li>
+      <li><a href="#">Seccion 2</a></li>
+      <li><a href="#">Seccion 3</a></li>
+      <li><a href="#">Seccion 4</a></li>
+      <li><a href="#">Seccion 5</a></li>
+    </ul>
+  </nav>
+  <input type="text" name="nombre" placeholder="Nombre">
+
+  <a class="link__dom" href="JSON_DOM_APIS.html">DOM</a>
+  <section class="cards">
+    <figure class="card">
+      <img src="https://placeimg.com/200/200/tech" alt="Tech">
+      <figcaption>Tech</figcaption>
+    </figure>
+    <figure class="card">
+      <img src="https://placeimg.com/200/200/animals" alt="Animals">
+      <figcaption>Animals</figcaption>
+    </figure>
+    <figure class="card">
+      <img src="https://placeimg.com/200/200/arch" alt="Architecture">
+      <figcaption>Architecture</figcaption>
+    </figure>
+    <figure class="card">
+      <img src="https://placeimg.com/200/200/people" alt="People">
+      <figcaption>People</figcaption>
+    </figure>
+    <figure class="card">
+      <img src="https://placeimg.com/200/200/nature" alt="Nature">
+      <figcaption>Nature</figcaption>
+    </figure>
+  </section>
+  <template id="template-card">
+    <figure class="card">
+      <img>
+      <figcaption></figcaption>
+    </figure>
+  </template>
+  <h3>Manejadores de eventos</h3>
+  <h4>Manejadores de eventos</h4>
+  <button onclick="holaMundo()">Evento con atributo HTML</button>
+  <br><br>
+  <input type="button" value="Evento con manejador semantico" id="evento-semantico">
+  <br><br>
+  <input type="button" value="Evento con manejador multiple" id="evento-multiple">
+  <br><br>
+  <input type="button" value="Removiendo eventos con manejadores multiples" id="evento-remover">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h3>Flujo de eventos</h3>
+  <section class="eventos__flujo">
+    <div class="uno">
+      1
+      <div class="dos">
+        2
+        <div class="tres">
+          3
+          <a href="https://jonmircha.com/" target="_blank" rel="noopener" class="enlace">Enlace a web</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <h3 style="width: 2000px;">MANEJO DEL BOM</h3>
+  <input type="button" value="Abrir ventana" id="abrir-ventana">
+  <br><br>
+  <input type="button" value="Cerrar ventana" id="cerrar-ventana">
+  <br><br>
+  <input type="button" value="Imprimir ventana" id="imprimir-ventana">
+  <br><br>
+  <br>
+  <br>
+
+  <script src="./js/json_dom_apis.js"></script>
+</body>
+
+</html>

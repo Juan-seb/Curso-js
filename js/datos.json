@@ -1,0 +1,8 @@
+{
+    "cadena":"Juan",
+    "numero":18,
+    "booleano":false,
+    "arreglo":["correr","programar","cocinar"],
+    "objeto":{"face":"juanSebastian"},
+    "nulo":null
+}

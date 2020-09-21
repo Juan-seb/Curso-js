@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos JS</title>
+</head>
+<body>
+    <h1>Fundamentos js</h1>
+    
+    <script>
+        /* let hola="Hola mundo"
+        console.log(hola)
+        console.log(
+         */
+        /* const PI = 3.1416
+        console.log(PI) */
+
+        let objeto = {
+            /* name: "Juan",
+            edad: 18 */ /*Esto es un objeto siempre con {}*/
+            /*Los arrays inician con []*/
+        }
+
+        /* let colores = ["blanco","negro","azul"];
+
+        console.log(objeto);
+        console.log(colores);
+
+        objeto.correo="Holis";
+        colores.push("rojo");
+
+        console.log(objeto);
+        console.log(colores); */
+
+        //Cadenas de texto
+
+        /* let name = "Juan";
+        let saludo = new String("Hola mundo"); */ /*String con el constructor, al crearla con el constructor de una vez se
+        aplican ciertas propiedades*/
+
+        /* console.log(saludo.length); */
+
+        //Concatenacion de variables.
+
+        /* let name = "Juan"
+        let saludo = "Hola mi name es "+name+"." */
+
+        //Interpolacion de variables - Template strings
+
+        /* let saludo2=`Hola mi name es ${name}` */ /*backtick para los template strings*/
+
+        /* console.log(saludo, saludo2); */
+        /*Las template strings nos permiten hacer lo siguiente sin que genere errores*/
+        /* let ul =`
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>`;
+ */
+        /* console.log(ul); */
+
+        /* let c=7.19
+        let h="5.15"
+        
+        console.log(c.toFixed(2))
+
+        console.log(c+parseFloat(h)); */
+
+        //Undefined, null y Nan
+
+        /* let indefinida;
+        console.log(indefinida);
+
+        let nulo = null;
+        console.log(nulo); */
+
+        // Funciones
+
+        // -> Declarada
+
+        /* function miFuncion(){
+            console.log("Uno");
+            console.log("Dos");
+            console.log("Tres");
+        } */
+
+        /* miFuncion(); */
+
+        /* function saludar(name = "Desconocido", edad = "Desconocida" ){
+            console.log(`Hola mi name es ${name} y tengo ${edad} años`)
+            return "Lo logramos"
+        } */
+
+        /* saludar("juan",18);  *//*Puedo pasarle variables, numeros, strings*/
+        /* saludar(); */
+
+        /* let hola = saludar("Juan" , 5)
+        console.log(hola) */ /*Puedo guardar el return de la funcion en una variable e imprimirlo*/
+
+        //Funciones declaradas, esta suben a un ambito global y no importa desde donde las llamemos
+
+        /* saludo()
+
+        function saludo() {
+            console.log("Hola gente");
+        } */
+
+        /* saludo(); */
+
+        //Funcion Expresada, estas no suben a un ambito global, importa el orden
+
+        /* const funcionExpresada = function () {
+            console.log("Funcion expresada guardada en una variable");
+        } */
+
+        /* funcionExpresada(); */
+
+        // -> Arreglos
+
+        /* const a = [];
+        const b = [1,true,"arreglo",[5,"Hola"]];
+
+        b.push(false);
+
+        console.log(b[3][0])
+
+        const colores = ["rojo"];
+        colores.push("Azul")
+        console.log(colores)
+
+        colores.forEach(function (el,ind) {
+            console.log(`<li id="${ind}">${el}</li>`);
+        }); */
+
+        // -> Objetos
+
+        /* const objeto2 = {
+
+        }
+
+        const name = {
+            name: "Juan",
+            apellido: "Angulo",
+            edad: 18,
+            pasatiempos: ["Correr","programar"],
+            contacto:{ 
+                telefono: 7582333
+            },
+            saludar: function () {
+                console.log(`hola`)
+            },
+            decirAdios: function() {
+                console.log(`Adios mi querido ${this.name}`)  
+            }
+        } */
+/* 
+        console.log(name);
+        name["name"]="Juancito"
+        console.log(name["name"]); Forma 1 de acceder a los atributos*/
+
+        /* console.log(name.name); */
+        /*Accedemos al atributo*/
+        /* console.log(name.pasatiempos[0]); */
+        /*Accedemos al atributo y lo que hay en el array que le corresponde*/
+        /* console.log(name.contacto.telefono); */
+        /*Accedemos al objeto que esta dentro del objeto*/
+        /* name.saludar()  */
+        /*Llamo al metodo saludar*/
+        /* name.decirAdios(); */
+
+        /* console.log(name.hasOwnProperty("name")); */
+
+        // -> Operadores
+
+        //Unarios
+
+        let i=1;
+
+        /* i+=2; */ /*Operador unario*/
+
+        //Condicionales
+
+        /*OPERADOR TERNARIO*/
+
+        /* let edad = 18; */
+
+        /* let verdadero=(edad>17)?"Eres mayor de edad":"Eres menor de edad"; */
+
+        /* console.log(verdadero); */
+
+        /*Switch - case*/
+
+        /*0-Domingo
+        1-Lunes
+        2-Martes
+        3-Miercoles
+        4-Jueves
+        5-Viernes
+        6-Sabado*/
+
+        let dia = 1;
+
+        /* switch (dia) {
+            case 1:
+                console.log("Hoy es lunes")
+                break;
+        
+            case 2:
+                console.log("Hoy es martes")
+                break;
+                
+            default:
+                console.log("No es un dia valido")
+                break;
+        } */
+
+        // -> Ciclos / Loops
+
+        let contador = 0;
+
+        /* while (contador<10) {
+            console.log(contador);
+            contador++;
+        }
+
+        console.log("aqui va el do while");
+
+        contador = 0;
+
+        do {
+            console.log(contador);
+            contador++;
+        } while (contador<10);
+ */
+
+        // ciclo for
+
+        /* for (let i = 0; i < 10; i++) {
+            console.log(`for ${contador}`)
+            contador++;
+        } */
+        
+        // ciclo for in
+
+        const datos = {
+            name : "Juan",
+            apellido : "Angulo"
+        }
+
+
+
+        /* for (const propiedad in datos) {
+            console.log(`Key: ${propiedad}, Value: ${datos[propiedad]}`);
+        } */
+
+        // ciclo for of
+
+        /* const numeros = [10,20,30,40] */
+
+        /* for (const propiedad of "numeros") {
+            console.log(propiedad); 
+        } */
+
+        // -> Manejo de errores
+
+        try {
+            /* console.log("Aqui va el codigo a evaluar"); */
+            let numero = "hola";
+            if(isNaN(numero)){
+                throw new Error("El caracter no es un numero");
+                console.log("Hecho");
+            }
+
+            numero = numero * 10;
+            console.log(numero);
+        } catch (error) {
+            /* console.log("Captura de cualquier error en el try"); */
+            console.log(`Se produjo el ${error}`);
+        }/* finally{
+            console.log("El bloque finally se ejecutara siempre al final de un try-catch")
+        } */
+
+        // -> Break y continue
+
+        /* const numeros = [10,20,30,40,50,60,70,80,90,100];
+
+        for (let i = 0; i < numeros.length; i++) {
+            console.log(numeros[i])
+            
+        } */
+
+        // -> Desestructuracion
+
+        /* let numeros = [1,2,3] */
+
+        /*Sin destructuracion*/
+
+        /* let uno = numeros[0],
+            dos = numeros[1],
+            tres = numeros[2]
+        
+        console.log(uno,dos,tres) */
+
+        /*Con destructuracion*/
+
+        /* let [one, ...rest] = numeros;
+
+        console.log(rest);
+
+        let [two, three] = rest;
+
+        console.log(two, three);
+
+        const persona = {
+            name: "Juan",
+            apellido: "Angulo",
+            tiempo: 35
+        }
+
+        let {name,apellido,tiempo} = persona;
+        name = "joan";
+        console.log(name, apellido,tiempo); */
+
+        // -> Obejtos literales
+
+        /*NORMAL*/
+
+        /* let name = "Tony",
+            edad = 7;
+
+        const perro = {
+            name: name,
+            edad: edad
+        }
+
+        console.log(perro); */
+
+        /*OBJETO LITERAL*/
+
+        /* const dog = {
+            name,
+            edad,
+            raza: "callejero",
+            ladrar(){
+                console.log("Perro ladra")
+            }
+        } */
+
+        /* console.log(dog); */
+
+        // PARAMETROS REST Y OPERADOR SPREAD
+
+        // PARAMETRO REST
+
+        /* function sumar(a,b,...c) {
+            let resultado = a + b;
+
+            c.forEach(function(n) {
+                resultado += n;
+            });
+
+            
+
+            return resultado;
+        }
+
+        console.log(sumar(1,2,3,4)); */
+
+        //OPERADOR SPREAD
+
+        /* const arr1 = [1,2,3];
+        const arr2 = [4,5,6];
+
+        const arr3 = [...arr1 , ...arr2];
+
+        console.log(arr3); */
+
+        //Arrow functions
+
+        /* const saludar = () => console.log("Hola");
+
+        saludar(); */ 
+
+        /* const saludar = name => console.log(`Hola ${name}`);
+        saludar("Juan"); */
+
+        /* const suma = (a,b) => a+b;
+        console.log(suma(9,9)); */
+
+        /* const num = [1,2,3,4,5];
+
+        num.forEach((element,index) => {
+            console.log(`El elemento ${element} esta en la posicion ${index}`);
+            console.log(this)
+        });
+
+        const obj = {
+            name: "Juan",
+            ladrar: () => {
+                console.log(this)
+            }
+        }
+
+        obj.ladrar(); */
+
+
+        // ->PROTOTIPOS
+
+        /*Funcion constructora en donde los metodos estan adentro*/
+
+        /* function Animal(name,genero) {
+            this.name = name;
+            this.genero = genero;
+
+            this.sonar = function() {
+                console.log("Hago sonidos")
+            }
+        } */
+
+        /*Funcion constructora en donde los metodos se los asignaremos al prototipo*/
+
+        /* function Animal(name,genero) {
+            this.name = name;
+            this.genero = genero;
+
+        }
+        
+        Animal.prototype.sonar = function() {
+            console.log("Hago sonidos")
+        } */
+        
+        /*De esta manera ahora el metodo estara disponible si es necesario llamarlo pero no aparecera duplicado*/
+        /* const perro = new Animal("Tony","Masculino");
+        console.log(perro); */
+        /* perro.sonar(); */
+
+        // -> HERENCIA PROTOTIPICA
+
+        /* function Perro(name, genero, size) {
+            this.super = Animal;
+            this.super(name,genero);
+            this.size = size;
+        }
+
+        Perro.prototype = new Animal();
+        Perro.prototype.constructor = Perro;
+
+        const perri = new Perro("snopp","hombre","15cm"); */
+
+        //Sobreescritura de metodos en el hijo
+
+        /* Perro.prototype.sonar = function () {
+            console.log("Soy un perro")
+        }
+
+        Perro.prototype.ladrar = function () {
+            console.log("Gua GUA ")
+        }
+
+        perri.sonar();
+        perri.ladrar();
+        
+        console.log(perri)
+ */
+
+        // -> CLASES
+
+        /* function Animal(name,genero) {
+            this.name = name;
+            this.genero = genero;
+
+        }
+        
+        Animal.prototype.sonar = function() {
+            console.log("Hago sonidos")
+        }
+        
+        class animal{
+            constructor(name,genero){
+                this.name = name;
+                this.genero = genero;
+            }
+
+            sonar(){
+                console.log("Hago sonidos")
+            }
+        }
+
+        const peri = new Animal("snoop","hombre");
+        peri.sonar();
+
+        class perro extends animal{
+            constructor(name,genero,size){
+                super(name,genero);
+                this.size = size;
+                this.raza = null;
+            }
+
+            sonar(){
+                console.log(`Soy un perro de name ${this.name}`);
+            }
+
+            ladrar(){
+                console.log("Ladro ladro");
+            }
+
+            static queEres(){
+                console.log("Somos los mejores amigos del hombre")
+            }
+
+            get getRaza(){
+                return this.raza;
+            }
+
+            set setRaza(raza){
+                this.raza = raza;
+            }
+        }
+
+        const scooby = new perro("scooby","macho","grander");
+        scooby.sonar();
+
+        console.log(scooby); */
+
+        // -> METODOS ESTATICOS, SETTERS Y GETTERS
+
+        /* perro.queEres();
+        scooby.setRaza = "Gran Danes";
+        const race = scooby.getRaza;
+        console.log(race)
+ */
+        
+        // -> OBJETO CONSOLE
+
+        /* console.log(console);
+        console.error("Yo soy un error");
+        console.warn("Avisooo");
+
+        let name = "Juan",
+            apellido = "Angulo";
+
+        console.log(name,apellido);
+        console.log(`Yo soy ${name} ${apellido}`);
+        console.log(`Mi name es %s %s`,name,apellido);
+
+        console.clear();
+        console.log(document);
+        console.dir(document);
+
+        console.group("Titulo");
+        console.log("Contenido 1")
+        console.groupEnd();
+
+        console.table(Object.entries(console))
+
+        const num = [1,2,3,4,5],
+            vocales = ["a","e","i","o","u"];
+
+        console.table(num);
+        console.table(vocales);
+
+        console.time("Tiempo");
+
+        const arraglo = Array(1000000);
+
+        for (let i = 0; i < arraglo.length; i++) {
+            arraglo[i] = i; 
+        }
+
+        console.timeEnd("Tiempo");
+
+        console.clear();
+
+        for (let i = 0; i < 10; i++) {
+            console.count("Cuenta");
+            console.log(i);          
+        }
+
+        let x=7,
+            y=5,
+            PruebaXY = "Se espera algo menor";
+
+        console.assert(x<y ,(x,y,PruebaXY)) */
+
+        /*OBJETO DATE*/
+
+        /* console.log(Date());
+
+        let fecha = new Date();
+        console.log(fecha);
+        console.log(fecha.getDate());
+        console.log(fecha.getDay());
+        console.log(fecha.getMonth());
+        console.log(fecha.getYear());
+        console.log(fecha.getFullYear());
+        console.log(fecha.toDateString());
+        console.log(fecha.toLocaleString());
+        console.log(fecha.toLocaleDateString());
+        console.log(fecha.getTimezoneOffset());
+ */
+
+        /* let cumple = new Date(2002,1,4);
+
+        console.log(cumple); */
+
+        // -> OBJETO MATH
+
+        /* console.log(Math);
+        console.log(Math.PI);
+
+        console.log(Math.ceil(7.2))
+        console.log(Math.floor(7.2))
+        console.log(Math.round(7.2))
+        console.log(Math.sign(0))
+        console.log(Math.round(Math.random()*100)) */
+
+        // -> OPERADOR DE CORTOCIRCUITO || o &&
+
+        /* const saludo = (name) => {
+            name = name || "Desconocido";
+            console.log(`Hola soy ${name}`);
+        }
+
+        saludo(); */
+
+        // -> ALERT, CONFIRM Y PROMPT
+
+        /* alert("Esto es una alerta")
+        confirm("Esto es una confirmacion, puedo devolver true o false")
+        prompt("Esto es un prompt") */
+
+        /* let alerta = alert("Esto es una alerta"),
+            confirmate = confirm("Esto es una confirmacion, puedo devolver true o false"),
+            aviso= prompt("Esto es un prompt o aviso y puedes ingresar datos");
+
+        console.log(alerta);
+        console.log(confirmate);
+        console.log(aviso); */
+
+        // -> EXPRESIONES REGULARES
+
+        /* let cadena = `Lorem ipsum dolor sit lorem amet consectetur adipisicing elit. Illum debitis incidunt quam sunt! 
+        Molestiae, aspernatur impedit, blanditiis quidem et deleniti temporibus exercitationem nisi ipsam repellendus 
+        nostrum similique voluptatibus beatae totam. `
+        */
+        /* 
+        let expReg = new RegExp("lorem","i");
+        let expReg2 = /lorem/ig;
+
+        console.log(expReg.test(cadena));
+        console.log(expReg.exec(cadena));
+        */
+
+        // -> FUNCIONES ANONIMAS AUTOEJECUTABLES
+
+        /* (function (d,w,c) {
+            console.log("Mi primer IIFE");
+            console.log(d)
+        })(document,window,console) */
+
+        /* (function (d,w,c){
+            console.log("Mi primer IIFE");
+            console.log(d)
+        })(document,window,console); */
+
+        // -> MODULOS
+
+        /*Aqui separamos los archivos*/
+
+
+
+    </script>
+</body>
+</html>
