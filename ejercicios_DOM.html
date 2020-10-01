@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-dark>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="dist/hamburgers.css" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/normalize.css">
+    <link rel="stylesheet" href="./CSS/menuHamburguesa.css">
+    <title>EJERCICIOS DOM</title>
+</head>
+
+<body data-dark>
+    <header class="encabezado" data-dark>
+        <p class="encabezado__title">Ejercicios DOM</p>
+    </header>
+    <button class="btn__oculto hamburger hamburger--vortex" type="button">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <input type="button" value="" class="btn__scroll">
+    <input type="button" value="" class="btn__color">
+
+    <aside class="menu">
+        <ul class="menu__main-oculto">
+            <li class="menu__section"><a href="#seccion_1" class="menu__link" id="seccion">Reloj digital y alarma sonora</a></li>
+            <li class="menu__section"><a href="#seccion_2" class="menu__link" id="seccion">Movimiento y colisiones</a></li>
+            <li class="menu__section"><a href="#seccion_3" class="menu__link" id="seccion">Cuenta atras</a></li>
+            <li class="menu__section"><a href="#seccion_4" class="menu__link" id="seccion">Responsive con javascript</a></li>
+            <li class="menu__section"><a href="#seccion_5" class="menu__link" id="seccion">Seccion 5</a></li>
+            <li class="menu__section"><a href="#seccion_5" class="menu__link" id="seccion">Seccion 5</a></li>
+        </ul>
+    </aside>
+
+    <section class="containers secc1" id="seccion_1">
+        
+        <h2>Reloj digital y alarma sonora</h2>
+        <p class="hora"></p>
+        <input type="button" value="Iniciar reloj" class="botonHora">
+        <input type="button" value="Detener reloj" class="botonDetener">
+        <input type="button" value="Iniciar alarma" class="iniciarAlarma">
+        <input type="button" value="Detener alarma" class="detenerAlarma">
+        <audio class="audio">
+            <source src="/dist/alarma-good-4-morning.mp3" type="audio/mpeg">
+        </audio>
+    </section>
+    <section class="containers container2" id="seccion_2">
+        <h2>Peloticas</h2>
+        
+        <div class="area">
+            <div class="pelota"></div>
+        </div>
+    </section>
+    <section class="containers" id="seccion_3">
+        <h2>Cuenta regresiva</h2>
+        <h4 class="tiempo"></h4>
+    </section>
+    <section class="containers" id="seccion_4">
+        <h2>Responsive con javascript</h2>
+        <div id="youtube"></div>
+        <div id="maps"></div>
+    </section>
+    <section class="containers" id="seccion_5">
+        <p class="section__p" id="parrafo">Seccion 5</p>
+    </section>
+
+
+    <script src="./js/ejerciciosDom.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+html{
+    scroll-behavior: smooth;
+    
+}
+
+.dark__mode{
+    color: yellow;
+    background-color: rgba(0, 0, 0, 0.63);
+}
+
+*{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.btn__scroll,
+.btn__oculto,
+.btn__color{
+    position: fixed;
+    bottom: 2vh;
+    right: 1vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background-color: yellow;
+    border: none;
+    outline: none;
+}
+
+.btn__scroll{
+    bottom: 2vh;
+    right: calc(4.25rem + 1vw);
+    margin: auto;
+    background-image: url(../assets/flecha-arriba.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transition: opacity .5s;
+    opacity: 0;
+}
+
+.btn__color{
+    bottom: 2vh;
+    left: 1vw;
+    background-image: url(../assets/luna.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transition: background-color .5s;
+    background-color: yellow;
+}
+
+.is-active__color{
+    background-color: yellow;
+    background-image: url(../assets/soleado.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.btn__color:hover{
+    transition: background-color .5s;
+    background-color: black;
+}
+
+.is-active__scroll{
+    transition: opacity .5s;
+    opacity: 1;
+}
+
+.encabezado{
+    width: 100%;
+    height: 15vh;
+    background-color: rgb(230, 230, 27);
+    margin: 0;
+    text-align: center;
+    position: sticky;
+    top: 0px;
+    color: black;
+}
+
+.encabezado__title{
+    margin: 0;
+    font-size: 2rem;
+    padding-top: 1.7rem;
+    position: relative;
+    
+
+}
+
+.menu__link{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: background-color .5s;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: yellow;  
+}
+
+.menu__link:hover{
+    background-color: rgba(241, 241, 63, 0.849);
+    transition: color .5s;
+    color: black;
+}
+
+.menu__section{
+    margin: .5rem 0;
+    font-family: sans-serif;
+    width: 100%;
+    height: 15%;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    position: relative;
+}
+
+.menu__main-oculto{
+    list-style: none;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    margin: 0rem 0rem;
+    padding: 0;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.63);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: transform .5s;
+    transform: translateX(-100%); 
+}
+
+.is-active{
+    transition: transform .5s;
+    transform: translateX(0);
+    
+}
+
+.container{
+    height: 15vh;
+}
+
+.section__p{
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1.2rem;
+}
+
+.containers{
+    padding: 2rem;
+    padding-top: 6.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    max-width: 1300px;
+    min-height: 98vh;
+    text-align: center;
+    z-index: 0;
+}
+
+.secc1{
+    padding-top: 0;
+}
+
+.area{
+    display: flex;
+    min-height: 50vh;
+    background-color: rgba(0, 0, 0, 0.63);
+}
+
+.pelota{
+    display: flex;
+    margin: auto;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color:rgb(230, 230, 27);   
+}
