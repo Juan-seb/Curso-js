@@ -206,7 +206,7 @@ export function responsiveJavascript(id, mediaQuerie, contMovil, contEscritorio)
     // La media Querie es la que nos indica en que momento pasara de contenido movil al del escritorio
     const $contenido = document.getElementById(id)
     let breakpoint = matchMedia(mediaQuerie);
-    
+
     const responsiv = (e) => {
         // Este `e` no es el evento sino el mediaQueryList
         if (e.matches) {
@@ -222,4 +222,154 @@ export function responsiveJavascript(id, mediaQuerie, contMovil, contEscritorio)
     }) */
     breakpoint.addEventListener('change', responsiv);
     responsiv(breakpoint);
+}
+
+export function formTester(form) {
+    const d = document;
+    const $form = d.getElementById(form);
+    let win;
+    // Con el $form.nombreElementoHTML podemos acceder facilmente a estos si estamos en un formulario, solo si estamos
+    // en un formulario
+    d.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (e.target.matches(form)) {
+            win = open($form.dir_web.value,
+                "Responsive tester",
+                `width=${$form.dir_anchura.value}px, height =${$form.dir_altura.value}px`
+            )
+        }
+    });
+
+    d.addEventListener('click', (e) => {
+        if (e.target === $form.cerrar) {
+            win.close();
+        }
+    })
+
+}
+
+export function detectionDevices(classUser) {
+    const d = document,
+    n = navigator, 
+    ua = n.userAgent
+
+    // El classUser es el div en el que iremos poniendo todo
+
+    // Los objetos contienen expresiones regulares que me ayudaran a saber el sistema operativo, el navegador
+    // y tambien si esta en un dispositivo movil, las funciones any me hacen una validacion general de todos
+    // sea el navegador o el sistema o si es movil.
+    const $parrafoUserAgent = d.querySelector(classUser),
+    isMobile = {
+        android: ()=>ua.match(/android/i),
+        iphone: ()=>ua.match(/iphone|ipad|ipod/i),
+        windows: ()=>ua.match(/windows phone/i),
+        any: function(){
+            return this.android() || this.iphone() || this.windows();
+        }
+    },
+    isDesktop = {
+        linux: ()=>ua.match(/linux/i),
+        apple: ()=>ua.match(/mac os/i),
+        windows: ()=>ua.match(/windows nt/i),
+        any: function(){
+            return this.linux() || this.apple() || this.windows();
+        }
+    },
+    isBrowser = {
+        chrome: ()=>ua.match(/chrome/i),
+        safari: ()=>ua.match(/safari/i),
+        firefox: ()=>ua.match(/firefox/i),
+        opera: ()=>ua.match(/opera | opera mini/i),
+        ie: ()=> ua.match(/msie | iemobile/i),
+        edge: () => ua.match(/edg/i),
+        any: function(){
+            
+            return this.ie() || this.edge() 
+            || this.chrome() || this.safari() 
+            || this.firefox() || this.opera() 
+    
+        }
+    }
+
+    $parrafoUserAgent.innerHTML = `
+    <ul>
+        <li>${ua}</li>
+        <li>Plataforma:${isMobile.any()?isMobile.any():isDesktop.any()}</li>
+        <li>Navegador: ${isBrowser.any()}</li>
+    </ul>`;
+    
+    // Para generar contenidos exclusivos
+
+    if(isBrowser.any()=="Chrome"){
+        $parrafoUserAgent.innerHTML += `<p><mark>Este contenido se visualiza en Chrome</mark></p>`
+    }
+    if(isBrowser.any()=="Edg"){
+        $parrafoUserAgent.innerHTML += `<p><mark>Este contenido se visualiza en Edge</mark></p>`
+    }
+
+    // Para generar contenido a partir del sistema operativo
+    if(isDesktop.windows()){
+        $parrafoUserAgent.innerHTML += `<p><mark>Descarga la version windows</mark></p>`
+    }
+
+    // Redirecciones
+
+    if (isMobile.android()) {
+        location.href="https://jonmircha.com"
+    }
+}
+
+export function conexion(notification,classConection) {
+    const w = window;
+    const n = navigator;
+    const $message = document.querySelector(notification);
+
+    // notification es la clase del elemento html que aparecere cuando se este conectado o desconectado
+    // classConection es la clase que vamos a agregar cuando se desconecte o se conecte.
+
+    // Forma con función como parametro del Listener
+
+    /* const online = () =>{
+        if(n.onLine){
+            $message.style.backgroundColor = 'green';
+            $message.classList.add(classConection);
+            $message.textContent = 'Conectado de nuevo';
+            setTimeout(() => {
+                $message.classList.remove(classConection);
+            }, 4000);
+        }else{
+            $message.style.backgroundColor = 'red';
+            $message.classList.add(classConection);
+            $message.textContent = 'Estas desconectado';
+            setTimeout(() => {
+                $message.classList.remove(classConection);
+            }, 4000);
+        }
+    } */
+
+    /* w.addEventListener('online',online)
+    w.addEventListener('offline',online); */
+
+
+    // Forma sin funcion (normal)
+
+    w.addEventListener('online',(e)=>{
+        $message.style.backgroundColor = 'green';
+        $message.classList.add(classConection);
+        $message.textContent = 'Conectado de nuevo';
+        setTimeout(() => {
+            $message.classList.remove(classConection);
+        }, 4000);
+    });
+    w.addEventListener('offline',(e)=>{
+        $message.style.backgroundColor = 'red';
+        $message.classList.add(classConection);
+        $message.textContent = 'Estas desconectado';
+        setTimeout(() => {
+            $message.classList.remove(classConection);
+        }, 4000);
+    });
+    
+    
 }
