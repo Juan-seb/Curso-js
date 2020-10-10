@@ -373,3 +373,102 @@ export function conexion(notification,classConection) {
     
     
 }
+
+export function webCam(video) {
+    // API mediaDevices me permite acceder a video, audio, los dispositivos, etc.
+
+    const $video = document.getElementById(video);
+    const cam = navigator.mediaDevices.getUserMedia({
+        video: { 
+            width: 1280, 
+            height: 720 
+        }
+    })
+    // Promise para el metodo getUserMedia() con este podemos empezar a mostrar lo que esta en la camara.
+    cam.then((stream)=>{
+        $video.srcObject = stream;
+        $video.play();
+        console.log(stream)
+    }).catch((err) => {
+        $video.style.width = '0';
+        $video.style.height = '0';
+        $video.insertAdjacentHTML("beforebegin","<p>El video no se pudo cargar, permite usar tu camara</p>")
+        console.log(err)
+    });   
+
+    /* const cam2 = navigator.mediaDevices.enumerateDevices(); */
+    // Promise para los dispositivos que se encuentran disponibles
+
+    /* cam2.then((devices)=>{
+        devices.forEach(element => {
+            console.log(element);
+        });
+    }) */
+    
+}
+
+export function geolocation(locate) {
+    
+    const $divLocate = document.querySelector(locate)
+    let posicion;
+
+    const options = {
+        enableHighAccuracy : true,
+        timeout : 2000,
+        maxiumAge : 0
+    }
+
+    const position = (pos) =>{
+        const cord = pos.coords;
+        console.log(pos)
+        posicion = `
+        <ul>
+            <li>La latitud es: ${cord.latitude}</li>
+            <li>La longitud es: ${cord.longitude}</li>
+            <li>La presicion es de: ${cord.accuracy} metros</li>
+            <li><a href="https://www.google.com/maps/@${cord.latitude},${cord.longitude},18z" target="_blank">Ver en GoogleMaps</a></li>
+        </ul>
+        `;
+        $divLocate.innerHTML = posicion;
+    }
+
+    const error = (err) =>{
+        console.log(err)
+    }
+
+    navigator.geolocation.getCurrentPosition(position,error,options);
+
+}
+
+export function searchFilter(input,selectors) {
+    const d = document;
+    
+    d.addEventListener('keyup',(e)=>{
+        if(e.target.matches(input)){
+            
+            d.querySelectorAll(selectors).forEach(element => {
+                // El metodo includes es para comparar una subcadena (e.target.value) que se puede encontrar en la cadena
+                // principal (element.textContent) 
+                if(element.textContent.toLowerCase().includes((e.target.value).toLowerCase())){
+                    element.classList.remove("filter")
+                }else{
+                    element.classList.add("filter")
+                }
+            });
+        }
+    })
+    
+}
+
+export function sorteo(btnSorteo,listaSorteo) {
+    const d = document;
+    const $lista = d.querySelectorAll(listaSorteo)
+    
+    d.addEventListener('click',(e)=>{
+        if (e.target.matches(btnSorteo)) {
+            let posicion = Math.floor((Math.random()*10))
+            alert(`El ganador es: ${$lista[posicion].textContent}`)
+        }
+    });
+
+}
