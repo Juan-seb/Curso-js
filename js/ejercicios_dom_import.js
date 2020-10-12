@@ -63,11 +63,11 @@ export function alarmaSonora(btnReproducir, btnParar, audio) {
     });
 }
 
+let x = 0;
+let y = 0;
 export function moverPelota(e, pelota, marco) {
     // e es el evento keydown, pelota nos referimos al div que corresponde a la pelota y marco nos referimos
     // al area en donde se puede mover la pelota
-    let x = 0;
-    let y = 0;
 
     const $pelota = document.querySelector(pelota);
     const $area = document.querySelector(marco);
@@ -75,12 +75,13 @@ export function moverPelota(e, pelota, marco) {
     // elemento con respecto al padre y su posicion con respecto al top, left, bottom, right
     const limites = $area.getBoundingClientRect();
     const limPelota = $pelota.getBoundingClientRect();
-
+    console.log(limites,limPelota)
     switch (e.key) {
         case "ArrowDown":
             if (limPelota.bottom < limites.bottom) {
                 e.preventDefault();
                 y++;
+                console.log(y)
             }
             break;
 
@@ -105,6 +106,7 @@ export function moverPelota(e, pelota, marco) {
             }
             break;
     }
+    console.log(x,y)
     $pelota.style.transform = `translate(${x * 15}px , ${y * 15}px)`;
 }
 
@@ -480,13 +482,13 @@ export function sorteo(btnSorteo, listaSorteo) {
     return `El ganador es: ${winner.textContent}`
 } */
 
-export function responsiveSlider() {
+export function responsiveSlider(btnNext, btnBefore, active, slider) {
     const d = document;
-    const $sliders = d.querySelectorAll('.slider')
+    const $sliders = d.querySelectorAll(slider)
     let posicion = 0;
 
     d.addEventListener('click', (e) => {
-        if (e.target.matches(".btn-next")) {
+        if (e.target.matches(btnNext)) {
 
             // Forma 1 Cambio de clases por medio de elementos hermanos, poco rentable pero la mía
 
@@ -494,54 +496,54 @@ export function responsiveSlider() {
             let $cambio = $active.nextElementSibling;
 
             if ($cambio != null) {
-                $active.classList.replace("activo","desactivado")
-                $cambio.classList.replace("desactivado","activo");
+                $active.classList.replace(active,"desactivado")
+                $cambio.classList.replace("desactivado",active);
             }else{
-                $active.classList.replace("activo","desactivado")
+                $active.classList.replace(active,"desactivado")
                 const $next = d.querySelector(".next");
-                $next.classList.replace("desactivado","activo")
+                $next.classList.replace("desactivado",active)
             } */
 
             // Forma 2, podemos traer con un querySelectorAll todos los nodos de la responsive slider, de esta manera
             // nos movemos entre los nodos y ademas de eso podemos solo quitar las clases. No intercambiarlas.
 
-            $sliders[posicion].classList.remove("activo")
+            $sliders[posicion].classList.remove(active)
             posicion++;
-            if (posicion > $sliders.length -1) {
+            if (posicion > $sliders.length - 1) {
                 posicion = 0;
-                $sliders[posicion].classList.add("activo")
+                $sliders[posicion].classList.add(active)
             } else {
-                $sliders[posicion].classList.add("activo")
+                $sliders[posicion].classList.add(active)
             }
         }
     });
 
     d.addEventListener('click', (e) => {
-        if (e.target.matches(".btn-before")) {
+        if (e.target.matches(btnBefore)) {
             // Forma 1 Cambio de clases por medio de elementos hermanos, poco rentable pero la mía
             /* const $active = d.querySelector(".activo");
             let $cambio = $active.previousElementSibling;
 
             if ($cambio != null && $cambio.classList.contains("desactivado")) {
-                $active.classList.replace("activo","desactivado")
-                $cambio.classList.replace("desactivado","activo");
+                $active.classList.replace(active,"desactivado")
+                $cambio.classList.replace("desactivado",active);
             }else{
-                $active.classList.replace("activo","desactivado")
+                $active.classList.replace(active,"desactivado")
                 const $before = d.querySelector(".before");
-                $before .classList.replace("desactivado","activo")
+                $before .classList.replace("desactivado",active)
             } */
 
             // Forma 2, podemos traer con un querySelectorAll todos los nodos de la responsive slider, de esta manera
             // nos movemos entre los nodos y ademas de eso podemos solo quitar las clases.
 
-            $sliders[posicion].classList.remove("activo");
+            $sliders[posicion].classList.remove(active);
             posicion--;
 
             if (posicion < 0) {
-                posicion = $sliders.length -1 ;
-                $sliders[posicion].classList.add("activo");
+                posicion = $sliders.length - 1;
+                $sliders[posicion].classList.add(active);
             } else {
-                $sliders[posicion].classList.add("activo");
+                $sliders[posicion].classList.add(active);
             }
         }
     })

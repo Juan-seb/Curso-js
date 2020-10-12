@@ -14,8 +14,8 @@ import {
     geolocation,
     searchFilter,
     sorteo,
-    responsiveSlider
-} from './ejercicios_dom_import.js'
+    responsiveSlider,
+    scrollSpy} from './ejercicios_dom_import.js'
 
 document.addEventListener('DOMContentLoaded', (e) => {
     hamburgerMenu(".btn__oculto", ".menu__main-oculto", ".menu__link");
@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
     webCam('video__camara');
     searchFilter(".card-filter", ".card");
     sorteo(".btn_ganador", ".sorteo");
-    responsiveSlider()
+    responsiveSlider(".btn-next", ".btn-before", "activo", '.slider');
+    scrollSpy()
 });
 
 document.addEventListener('keydown', (e) => {
@@ -55,3 +56,30 @@ botonDarkLight(".btn__color", "[data-dark]", "dark__mode", "is-active__color");
 conexion(".conection", 'is-active__conection');
 geolocation(".locate")
 
+const $contenedores = document.querySelectorAll(".containers")
+
+const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.6
+}
+
+function intersectionCallback(entries) {
+    entries.forEach((entry) => {
+        let target = entry.target.getAttribute("id");
+        const $scroll = document.querySelector(`.${target}`);
+        
+        if (entry.isIntersecting) {
+            $scroll.classList.add("sec")
+        }else{
+            $scroll.classList.remove("sec")
+        }
+        
+    });
+}
+
+const observer = new IntersectionObserver(intersectionCallback, options);
+
+$contenedores.forEach(element => {
+    observer.observe(element);
+});

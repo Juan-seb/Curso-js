@@ -34,7 +34,7 @@ html{
     background-color: yellow;
     border: none;
     outline: none;
-    z-index: 110;
+    z-index: 1002;
 }
 
 .btn__scroll{
@@ -143,7 +143,7 @@ html{
     left: 0;
     transition: transform .5s;
     transform: translateX(-100%); 
-    z-index: 100;
+    z-index: 1001;
 }
 
 .is-active{
@@ -321,4 +321,56 @@ html{
 .btn-before{
     left: 1vw;
     background-image: url(../assets/flecha-izquierda.png);
+}
+
+@media screen and (min-width: 1024px){
+    body{
+        display: grid;
+        grid-template-columns: 75% 25%;
+        grid-template-rows: 15vh auto;
+        grid-template-areas: 
+        "header header"
+        "main panel";
+    }
+
+    header{
+        grid-area: header;
+    }   
+
+    main{
+        grid-area: main;
+    }
+
+    .menu__main-oculto{
+        grid-area: panel;
+    }
+
+    .menu__main-oculto{
+        transform: translateX(0);
+        top: 15vh;
+        height: 85vh;
+        position: sticky;
+        background-color: rgba(0, 0, 0, 0.795);
+    }
+
+    .menu__section{
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+    }
+
+    .btn__oculto{
+        display: none;
+    }
+
+    .btn__scroll{
+        right: unset;
+        left: calc(4.25rem + 1.2vw);
+    }
+
+    .sec{
+        background-color: rgb(228, 228, 50);
+        color: black;
+        border: black 1px solid;
+    }
 }
