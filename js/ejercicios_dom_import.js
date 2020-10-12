@@ -251,8 +251,8 @@ export function formTester(form) {
 
 export function detectionDevices(classUser) {
     const d = document,
-    n = navigator, 
-    ua = n.userAgent
+        n = navigator,
+        ua = n.userAgent
 
     // El classUser es el div en el que iremos poniendo todo
 
@@ -260,67 +260,67 @@ export function detectionDevices(classUser) {
     // y tambien si esta en un dispositivo movil, las funciones any me hacen una validacion general de todos
     // sea el navegador o el sistema o si es movil.
     const $parrafoUserAgent = d.querySelector(classUser),
-    isMobile = {
-        android: ()=>ua.match(/android/i),
-        iphone: ()=>ua.match(/iphone|ipad|ipod/i),
-        windows: ()=>ua.match(/windows phone/i),
-        any: function(){
-            return this.android() || this.iphone() || this.windows();
+        isMobile = {
+            android: () => ua.match(/android/i),
+            iphone: () => ua.match(/iphone|ipad|ipod/i),
+            windows: () => ua.match(/windows phone/i),
+            any: function () {
+                return this.android() || this.iphone() || this.windows();
+            }
+        },
+        isDesktop = {
+            linux: () => ua.match(/linux/i),
+            apple: () => ua.match(/mac os/i),
+            windows: () => ua.match(/windows nt/i),
+            any: function () {
+                return this.linux() || this.apple() || this.windows();
+            }
+        },
+        isBrowser = {
+            chrome: () => ua.match(/chrome/i),
+            safari: () => ua.match(/safari/i),
+            firefox: () => ua.match(/firefox/i),
+            opera: () => ua.match(/opera | opera mini/i),
+            ie: () => ua.match(/msie | iemobile/i),
+            edge: () => ua.match(/edg/i),
+            any: function () {
+
+                return this.ie() || this.edge()
+                    || this.chrome() || this.safari()
+                    || this.firefox() || this.opera()
+
+            }
         }
-    },
-    isDesktop = {
-        linux: ()=>ua.match(/linux/i),
-        apple: ()=>ua.match(/mac os/i),
-        windows: ()=>ua.match(/windows nt/i),
-        any: function(){
-            return this.linux() || this.apple() || this.windows();
-        }
-    },
-    isBrowser = {
-        chrome: ()=>ua.match(/chrome/i),
-        safari: ()=>ua.match(/safari/i),
-        firefox: ()=>ua.match(/firefox/i),
-        opera: ()=>ua.match(/opera | opera mini/i),
-        ie: ()=> ua.match(/msie | iemobile/i),
-        edge: () => ua.match(/edg/i),
-        any: function(){
-            
-            return this.ie() || this.edge() 
-            || this.chrome() || this.safari() 
-            || this.firefox() || this.opera() 
-    
-        }
-    }
 
     $parrafoUserAgent.innerHTML = `
     <ul>
         <li>${ua}</li>
-        <li>Plataforma:${isMobile.any()?isMobile.any():isDesktop.any()}</li>
+        <li>Plataforma:${isMobile.any() ? isMobile.any() : isDesktop.any()}</li>
         <li>Navegador: ${isBrowser.any()}</li>
     </ul>`;
-    
+
     // Para generar contenidos exclusivos
 
-    if(isBrowser.any()=="Chrome"){
+    if (isBrowser.any() == "Chrome") {
         $parrafoUserAgent.innerHTML += `<p><mark>Este contenido se visualiza en Chrome</mark></p>`
     }
-    if(isBrowser.any()=="Edg"){
+    if (isBrowser.any() == "Edg") {
         $parrafoUserAgent.innerHTML += `<p><mark>Este contenido se visualiza en Edge</mark></p>`
     }
 
     // Para generar contenido a partir del sistema operativo
-    if(isDesktop.windows()){
+    if (isDesktop.windows()) {
         $parrafoUserAgent.innerHTML += `<p><mark>Descarga la version windows</mark></p>`
     }
 
     // Redirecciones
 
     if (isMobile.android()) {
-        location.href="https://jonmircha.com"
+        location.href = "https://jonmircha.com"
     }
 }
 
-export function conexion(notification,classConection) {
+export function conexion(notification, classConection) {
     const w = window;
     const n = navigator;
     const $message = document.querySelector(notification);
@@ -354,7 +354,7 @@ export function conexion(notification,classConection) {
 
     // Forma sin funcion (normal)
 
-    w.addEventListener('online',(e)=>{
+    w.addEventListener('online', (e) => {
         $message.style.backgroundColor = 'green';
         $message.classList.add(classConection);
         $message.textContent = 'Conectado de nuevo';
@@ -362,7 +362,7 @@ export function conexion(notification,classConection) {
             $message.classList.remove(classConection);
         }, 4000);
     });
-    w.addEventListener('offline',(e)=>{
+    w.addEventListener('offline', (e) => {
         $message.style.backgroundColor = 'red';
         $message.classList.add(classConection);
         $message.textContent = 'Estas desconectado';
@@ -370,8 +370,8 @@ export function conexion(notification,classConection) {
             $message.classList.remove(classConection);
         }, 4000);
     });
-    
-    
+
+
 }
 
 export function webCam(video) {
@@ -379,22 +379,22 @@ export function webCam(video) {
 
     const $video = document.getElementById(video);
     const cam = navigator.mediaDevices.getUserMedia({
-        video: { 
-            width: 1280, 
-            height: 720 
+        video: {
+            width: 1280,
+            height: 720
         }
     })
     // Promise para el metodo getUserMedia() con este podemos empezar a mostrar lo que esta en la camara.
-    cam.then((stream)=>{
+    cam.then((stream) => {
         $video.srcObject = stream;
         $video.play();
         console.log(stream)
     }).catch((err) => {
         $video.style.width = '0';
         $video.style.height = '0';
-        $video.insertAdjacentHTML("beforebegin","<p>El video no se pudo cargar, permite usar tu camara</p>")
+        $video.insertAdjacentHTML("beforebegin", "<p>El video no se pudo cargar, permite usar tu camara</p>")
         console.log(err)
-    });   
+    });
 
     /* const cam2 = navigator.mediaDevices.enumerateDevices(); */
     // Promise para los dispositivos que se encuentran disponibles
@@ -404,23 +404,22 @@ export function webCam(video) {
             console.log(element);
         });
     }) */
-    
+
 }
 
 export function geolocation(locate) {
-    
+
     const $divLocate = document.querySelector(locate)
     let posicion;
 
     const options = {
-        enableHighAccuracy : true,
-        timeout : 2000,
-        maxiumAge : 0
+        enableHighAccuracy: true,
+        timeout: 2000,
+        maxiumAge: 0
     }
 
-    const position = (pos) =>{
+    const position = (pos) => {
         const cord = pos.coords;
-        console.log(pos)
         posicion = `
         <ul>
             <li>La latitud es: ${cord.latitude}</li>
@@ -432,43 +431,119 @@ export function geolocation(locate) {
         $divLocate.innerHTML = posicion;
     }
 
-    const error = (err) =>{
+    const error = (err) => {
         console.log(err)
     }
 
-    navigator.geolocation.getCurrentPosition(position,error,options);
+    navigator.geolocation.getCurrentPosition(position, error, options);
 
 }
 
-export function searchFilter(input,selectors) {
+export function searchFilter(input, selectors) {
     const d = document;
-    
-    d.addEventListener('keyup',(e)=>{
-        if(e.target.matches(input)){
-            
+
+    d.addEventListener('keyup', (e) => {
+        if (e.target.matches(input)) {
+
             d.querySelectorAll(selectors).forEach(element => {
                 // El metodo includes es para comparar una subcadena (e.target.value) que se puede encontrar en la cadena
                 // principal (element.textContent) 
-                if(element.textContent.toLowerCase().includes((e.target.value).toLowerCase())){
+                if (element.textContent.toLowerCase().includes((e.target.value).toLowerCase())) {
                     element.classList.remove("filter")
-                }else{
+                } else {
                     element.classList.add("filter")
                 }
             });
         }
     })
-    
+
 }
 
-export function sorteo(btnSorteo,listaSorteo) {
+export function sorteo(btnSorteo, listaSorteo) {
     const d = document;
     const $lista = d.querySelectorAll(listaSorteo)
-    
-    d.addEventListener('click',(e)=>{
+
+    d.addEventListener('click', (e) => {
         if (e.target.matches(btnSorteo)) {
-            let posicion = Math.floor((Math.random()*10))
+            let posicion = Math.floor((Math.random() * $lista.length))
             alert(`El ganador es: ${$lista[posicion].textContent}`)
         }
     });
+
+}
+// Funcion para el sorteo en una pagina web, pegar en la consola de la pagina
+/* const getWinner2 = (listaSorteo) =>{
+    const $lista = document.querySelectorAll(listaSorteo)
+    let posicion = Math.floor((Math.random()*$lista.length));
+    const winner = $lista[posicion] 
+    console.log(winner)
+    return `El ganador es: ${winner.textContent}`
+} */
+
+export function responsiveSlider() {
+    const d = document;
+    const $sliders = d.querySelectorAll('.slider')
+    let posicion = 0;
+
+    d.addEventListener('click', (e) => {
+        if (e.target.matches(".btn-next")) {
+
+            // Forma 1 Cambio de clases por medio de elementos hermanos, poco rentable pero la mía
+
+            /* const $active = d.querySelector(".activo");
+            let $cambio = $active.nextElementSibling;
+
+            if ($cambio != null) {
+                $active.classList.replace("activo","desactivado")
+                $cambio.classList.replace("desactivado","activo");
+            }else{
+                $active.classList.replace("activo","desactivado")
+                const $next = d.querySelector(".next");
+                $next.classList.replace("desactivado","activo")
+            } */
+
+            // Forma 2, podemos traer con un querySelectorAll todos los nodos de la responsive slider, de esta manera
+            // nos movemos entre los nodos y ademas de eso podemos solo quitar las clases. No intercambiarlas.
+
+            $sliders[posicion].classList.remove("activo")
+            posicion++;
+            if (posicion > $sliders.length -1) {
+                posicion = 0;
+                $sliders[posicion].classList.add("activo")
+            } else {
+                $sliders[posicion].classList.add("activo")
+            }
+        }
+    });
+
+    d.addEventListener('click', (e) => {
+        if (e.target.matches(".btn-before")) {
+            // Forma 1 Cambio de clases por medio de elementos hermanos, poco rentable pero la mía
+            /* const $active = d.querySelector(".activo");
+            let $cambio = $active.previousElementSibling;
+
+            if ($cambio != null && $cambio.classList.contains("desactivado")) {
+                $active.classList.replace("activo","desactivado")
+                $cambio.classList.replace("desactivado","activo");
+            }else{
+                $active.classList.replace("activo","desactivado")
+                const $before = d.querySelector(".before");
+                $before .classList.replace("desactivado","activo")
+            } */
+
+            // Forma 2, podemos traer con un querySelectorAll todos los nodos de la responsive slider, de esta manera
+            // nos movemos entre los nodos y ademas de eso podemos solo quitar las clases.
+
+            $sliders[posicion].classList.remove("activo");
+            posicion--;
+
+            if (posicion < 0) {
+                posicion = $sliders.length -1 ;
+                $sliders[posicion].classList.add("activo");
+            } else {
+                $sliders[posicion].classList.add("activo");
+            }
+        }
+    })
 
 }

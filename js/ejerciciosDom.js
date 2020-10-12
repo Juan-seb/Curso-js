@@ -13,7 +13,9 @@ import {
     webCam,
     geolocation,
     searchFilter,
-    sorteo} from './ejercicios_dom_import.js'
+    sorteo,
+    responsiveSlider
+} from './ejercicios_dom_import.js'
 
 document.addEventListener('DOMContentLoaded', (e) => {
     hamburgerMenu(".btn__oculto", ".menu__main-oculto", ".menu__link");
@@ -40,8 +42,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
     formTester("form");
     detectionDevices('.userAgent');
     webCam('video__camara');
-    searchFilter(".card-filter",".card");
-    sorteo(".btn_ganador",".sorteo")
+    searchFilter(".card-filter", ".card");
+    sorteo(".btn_ganador", ".sorteo");
+    responsiveSlider()
 });
 
 document.addEventListener('keydown', (e) => {
@@ -49,5 +52,6 @@ document.addEventListener('keydown', (e) => {
 })
 
 botonDarkLight(".btn__color", "[data-dark]", "dark__mode", "is-active__color");
-conexion(".conection",'is-active__conection');
+conexion(".conection", 'is-active__conection');
 geolocation(".locate")
+

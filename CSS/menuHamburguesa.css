@@ -34,6 +34,7 @@ html{
     background-color: yellow;
     border: none;
     outline: none;
+    z-index: 110;
 }
 
 .btn__scroll{
@@ -83,6 +84,7 @@ html{
     position: sticky;
     top: 0px;
     color: black;
+    z-index: 99;
 }
 
 .encabezado__title{
@@ -141,6 +143,7 @@ html{
     left: 0;
     transition: transform .5s;
     transform: translateX(-100%); 
+    z-index: 100;
 }
 
 .is-active{
@@ -213,6 +216,7 @@ html{
     z-index: 100;
     transition: opacity .5s;
     opacity: 0;
+    z-index: 1000;
 }
 
 .is-active__conection{
@@ -250,4 +254,71 @@ html{
     visibility: hidden;
     opacity: 0;
     order: 1;
+}
+
+.container__slider{
+    max-width: 70vw;
+    height: 60vh;
+    margin: auto;
+    position: relative;   
+}
+
+.container__img1,
+.container__img2{
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/Fondo\ 1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    position: absolute;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+}
+
+.container__img2{
+    background-image: url(../assets/Fondo\ 2.jpg);
+}
+
+.container__reverse{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.712);
+    position: absolute;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+}
+
+.activo{
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
+}
+
+.btn-next,
+.btn-before{
+    position: absolute;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    margin: auto;
+    bottom: 37%;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: 50%;
+    outline: none;
+    border: none;
+    z-index: 1;
+    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.582);
+}
+
+.btn-next{
+    right: 1vw;
+    background-image: url(../assets/flecha-correcta.png);
+}
+
+.btn-before{
+    left: 1vw;
+    background-image: url(../assets/flecha-izquierda.png);
 }
