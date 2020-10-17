@@ -343,9 +343,6 @@ html{
 
     .menu__main-oculto{
         grid-area: panel;
-    }
-
-    .menu__main-oculto{
         transform: translateX(0);
         top: 15vh;
         height: 85vh;
