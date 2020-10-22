@@ -45,6 +45,7 @@
             <li class="menu__section"><a href="#seccion_13" class="menu__link seccion_13" id="seccion">Scroll Spy</a></li>
             <li class="menu__section"><a href="#seccion_14" class="menu__link seccion_14" id="seccion">Video inteligente</a></li>
             <li class="menu__section"><a href="#seccion_15" class="menu__link seccion_15" id="seccion">Validacion de formularios</a></li>
+            <li class="menu__section"><a href="#seccion_16" class="menu__link seccion_16" id="seccion">Lector de voz - Narrador</a></li>
         </ul>
     </aside>
     <main>
@@ -78,11 +79,11 @@
         </section>
         <section class="containers" id="seccion_5">
             <p class="section__p" id="parrafo">Responsive tester</p>
-            <form id="form" action="">
+            <form id="form" class="form__tester" action="">
                 <input type="text" name="dir_web" class="tester" placeholder="Direccion web">
                 <input type="text" name="dir_anchura" class="tester" placeholder="Anchura de la web">
                 <input type="text" name="dir_altura" class="tester" placeholder="Altura de la web">
-                <input type="submit" value="Enviar">
+                <input type="submit" value="Enviar" name="form__submit">
                 <input type="button" value="Cerrar" name="cerrar">
     
             </form>
@@ -172,7 +173,7 @@
         </section>
         <section class="containers" id="seccion_14">
             <h2>Video inteligente con visibility change</h2>
-            <video controls muted class="video__observer">
+            <video controls muted class="video__observer" width="90%">
                 <source src="./dist/17 - El lago Laogai - Moodcool.mp4">
             </video>
             <!-- <br>
@@ -201,9 +202,32 @@
         </section>
         <section class="containers" id="seccion_15">
             <h2>Validacion de formularios</h2>
-            <form action="" class="form__val">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+            <!-- Ejecutar este action para que se pueda recopilar en mi correo, y un targe
+            para que se vuelva a abrir la pestaña -->
+            <form target="_blank" action="https://formsubmit.co/angulocita@gmail.com" method="POST" class="form__contact">
+                <legend>Envianos tus comentarios</legend>
+                <input type="text" class="form__formulario" name="name" placeholder="Escribe tu nombre" required 
+                pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" title="Escribe un nombre unicamente con letras">
+                <input type="email" class="form__formulario email" name="email" placeholder="Escribe tu email" required
+                pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" title="Asegurate de que sea un correo valido">
+                <input type="text" class="form__formulario" name="subject" placeholder="Asunto a tratar" required
+                title="Asunto es requerido" required>
+                <textarea class="form__formulario comment" name="comments" placeholder="Escribe tus comentarios" 
+                required data-pattern="^.{1,255}$" title="El texto no puede superar los 255 caracteres"></textarea>
+                <div class="form__loader none">
+                    <img src="./assets/oval.svg" alt="Cargando" width="10%">
+                </div>
+                <div class="form__sent none">
+                    <p>Los datos fueron enviados</p>
+                </div>
+                <input type="submit" value="Enviar" class="button__form">
             </form>
+        </section>
+        <section class="containers" id="seccion_16">
+            <h2>Narrador - Lector de voz</h2>
+            <select name=""class="selector"></select>
+            <textarea name="text_speak" class="text_speak"></textarea>
+            <input type="button" value="Leelo" class="button__read">
         </section>
     </main>
     <input type="button" value="" class="btn__color">

@@ -116,7 +116,7 @@ html{
 }
 
 .menu__section{
-    margin: .5rem 0;
+    margin: 0;
     font-family: sans-serif;
     width: 100%;
     height: 15%;
@@ -323,6 +323,8 @@ html{
     background-image: url(../assets/flecha-izquierda.png);
 }
 
+/*Scroll Spy*/
+
 @media screen and (min-width: 1024px){
     body{
         display: grid;
@@ -370,4 +372,89 @@ html{
         color: black;
         border: black 1px solid;
     }
+}
+
+/*Formularios con HTML 5*/
+
+legend{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0.5rem auto;
+}
+
+.form__contact > *{
+    width: 100%;
+    padding: 0.5rem;
+    margin: 1rem auto;
+    border-radius: 3px;
+    display: block;
+    outline: none;
+}
+
+.button__form{
+    width: 50%;
+    height: 45px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.form__contact [required]:valid{
+    border: 1px solid green;
+}
+
+.form__contact [required]:invalid{
+    border: 1px solid red;
+}
+
+.comment{
+    height: 100px;
+    resize: none;
+}
+
+.form__error{
+    margin-top: -1rem;
+    font-size: 80%;
+    background-color: red;
+    color: #fff;
+    transition: all 0.800ms ease;
+}
+
+.none{
+    display: none;
+}
+
+.form__loader{
+    width: 80%;
+}
+
+.is-active__form{
+    display: block;
+    animation: show-message 1s ease-out 0s normal both;
+}
+
+@keyframes show-message{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.selector,
+.button__read{
+    display: block;
+    margin: 1rem auto;
+    width: 50%;
+    height: 25px;
+}
+
+.text_speak{
+    width: 70%;
+    height: 100px;
+    resize: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

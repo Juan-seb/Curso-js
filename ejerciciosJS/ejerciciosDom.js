@@ -16,6 +16,8 @@ import {sorteo} from './sorteo.js'
 import {responsiveSlider} from './responsive_slider.js'    
 import {scrollSpy} from './scrollSpy_intersection.js'    
 import {intelligentVideo} from './ejerciciosFinales.js'
+import {submitForm} from './validaciones_form.js'
+import {storyTeller} from './storyTeller.js'
 
 document.addEventListener('DOMContentLoaded', (e) => {
     hamburgerMenu(".btn__oculto", ".menu__main-oculto", ".menu__link");
@@ -39,7 +41,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" 
         tabindex="0"></iframe>`);
 
-    formTester("form");
+    formTester("form",".form__tester");
     detectionDevices('.userAgent');
     webCam('video__camara');
     searchFilter(".card-filter", ".card");
@@ -47,6 +49,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
     responsiveSlider(".btn-next", ".btn-before", "activo", '.slider');
     scrollSpy(".containers", "id", "sec");
     intelligentVideo('.video__observer');
+    submitForm()
+    storyTeller();
 });
 
 document.addEventListener('keydown', (e) => {
