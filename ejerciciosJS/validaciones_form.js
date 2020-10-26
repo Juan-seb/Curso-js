@@ -44,7 +44,7 @@ export function submitForm() {
 
     
     d.addEventListener('submit',(e)=>{
-        
+    
         const $loader = d.querySelector('.form__loader');
         const $response = d.querySelector('.form__sent');
         // Ponemos el loader para que el cliente tengo un descanso visual.

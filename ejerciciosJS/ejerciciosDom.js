@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
     scrollSpy(".containers", "id", "sec");
     intelligentVideo('.video__observer');
     submitForm()
-    storyTeller();
 });
+
 
 document.addEventListener('keydown', (e) => {
     moverPelota(e, ".pelota", ".area");
@@ -60,3 +60,4 @@ document.addEventListener('keydown', (e) => {
 botonDarkLight(".btn__color", "[data-dark]", "dark__mode", "is-active__color");
 conexion(".conection", 'is-active__conection');
 geolocation(".locate");
+storyTeller();
