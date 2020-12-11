@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD API REST Axios</title>
+</head>
+
+<body>
+    <h1>CRUD API REST CON AXIOS</h1>
+    <section class="crud">
+        <article>
+            <h2 class="crud-title">Agregar Santo</h2>
+            <form class="crud-form">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <br>
+                <input type="text" name="const" placeholder="Constelacion" required>
+                <br>
+                <input type="submit" value="Enviar">
+                <input type="hidden" name="id">
+            </form>
+        </article>
+        <article>
+            <h2>VER SANTOS</h2>
+            <table class="crud">
+                <thead>
+                    <tr>
+                        <th>Nombre:</th>
+                        <th>Constelacion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </article>
+    </section>
+    <template id="crud-template">
+        <tr>
+            <td class="name"></td>
+            <td class="constelation"></td>
+            <td>
+                <button class="edit">Editar</button>
+                <button class="delete">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+
+
+    <script>
+        const d = document,
+            $table = d.querySelector(".crud"),
+            $form = d.querySelector('.crud-form'),
+            $title = d.querySelector('.crud-title'),
+            $template = d.getElementById('crud-template').content,
+            $fragment = d.createDocumentFragment();
+
+
+        const getAll = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/santos');
+                const json = await response.data
+                console.log(json)
+                json.forEach(element => {
+                    $template.querySelector('.name').textContent = element.nombre;
+                    $template.querySelector('.constelation').textContent = element.constelacion;
+                    $template.querySelector('.edit').dataset.id = element.id;
+                    $template.querySelector('.edit').dataset.nombre = element.nombre;
+                    $template.querySelector('.edit').dataset.const = element.constelacion;
+                    $template.querySelector('.delete').dataset.id = element.id;
+
+                    const $clone = $template.cloneNode(true);
+
+                    $fragment.appendChild($clone)
+
+                });
+
+                $table.querySelector('tbody').appendChild($fragment)
+            } catch (error) {
+                console.log(error)
+            }
+
+        }
+
+        d.addEventListener('DOMContentLoaded', getAll);
+
+        d.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (e.target === $form) {
+                if (!e.target.id.value) {
+                    console.log("press")
+
+                    /* const data = {
+                        nombre: e.target.nombre.value,
+                        constelacion: e.target.const.value
+                    } */
+                    try {
+                        const response = await axios.post('http://localhost:3000/santos', {
+                            nombre: e.target.nombre.value,
+                            constelacion: e.target.const.value
+                        },
+                            {
+                                headers: {
+                                    'Content-Type': "application/json; charset=utf-8"
+                                }
+
+                            })
+                    } catch (error) {
+                        console.log(error)
+                    }
+
+                } else {
+
+                    const response = await axios.put(`http://localhost:3000/santos/${e.target.id.value}`, {
+                        nombre: e.target.nombre.value,
+                        constelacion: e.target.const.value
+                    }, {
+                        headers: {
+                            'Content-Type': "application/json; charset=utf-8"
+                        }
+
+                    });
+
+                    console.log(response);
+                }
+            }
+        })
+
+        d.addEventListener('click', async (e) => {
+            if (e.target.matches('.edit')) {
+                $form.nombre.value = e.target.getAttribute('data-nombre');
+                $form.const.value = e.target.getAttribute('data-const');
+                $form.id.value = e.target.getAttribute('data-id')
+            }
+            if (e.target.matches('.delete')) {
+                const response = await axios.delete(`http://localhost:3000/santos/${e.target.getAttribute('data-id')}`, {
+                    headers: {
+                        'Content-Type': "application/json; charset=utf-8"
+                    }
+
+                });
+            }
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</body>
+
+</html>

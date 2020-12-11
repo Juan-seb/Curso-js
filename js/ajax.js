@@ -34,6 +34,7 @@
     xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
     xhr.readyState;
     xhr.send();
+    
 
 })();
 
@@ -43,7 +44,7 @@
 
     const $fetch = document.getElementById('fetch');
     const $fragment = document.createDocumentFragment();
-
+    
     fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.ok ? res.json() : Promise.reject(res)
 
         // Ejecutamos este metodo depende de la respuesta que me vaya a devolver, puede ser un JSON
@@ -127,7 +128,7 @@
     const $fragment = document.createDocumentFragment();
 
     // Llamada a la libreria axios y uso del metodo get para acceder al API y traer los usuarios.
-
+    // Axios trabaja por debajo con el objeto XMLHttpRequest, solo que lo utiliza con promesas
     axios.get("https://jsonplaceholder.typicode.com/users")
         .then((res) => {
             // Axios me crea un objeto personalizado en donde ya no tengo que parsear la informacion pues tiene una
@@ -165,22 +166,27 @@
 
     async function axiosAsync() {
         try {
+            // Hacemos la petición a la API, siempre anteponiendo la palabra await
             const res = await axios.get("https://jsonplaceholder.typicode.com/users")
+            // Esperamos los datos que hay en el objeto que devuelve axios para guardarlos en la variable data
             const data = await res.data;
 
+            // Inserción al fragmento, manipulacion de la información que nos llega del API
             data.forEach(element => {
                 const $li = document.createElement('li');
                 $li.textContent = `${element.name} -- ${element.email} -- ${element.phone}`;
                 $fragment.appendChild($li);
             });
-
+            // Insercion al DOM.
             $axiosAsync.appendChild($fragment);
 
         } catch (err) {
+            // Manejo del error.
             console.log(err.response)
             let message = err.response.statusText || "Ocurrio un error inesperado"
             $axiosAsync.textContent = `Error ${err.response.status} , ${message}`
         } finally {
+            // Codigo que siempre se ejecutara sin importar si hay un error o no con la peticion
             console.log("Codigo que se ejecuta, axios con async")
         }
     }

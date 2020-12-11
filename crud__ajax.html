@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD API REST AJAX</title>
+</head>
+
+<body>
+
+    <h1>CRUD API REST CON AJAX</h1>
+    <section class="crud">
+        <article>
+            <h2 class="crud-title">Agregar Santo</h2>
+            <form class="crud-form">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <br>
+                <input type="text" name="const" placeholder="Constelacion" required>
+                <br>
+                <input type="submit" value="Enviar" name="enviar">
+                <input type="hidden" name="id">
+            </form>
+        </article>
+        <article>
+            <h2>VER SANTOS</h2>
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Constelacion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </article>
+    </section>
+    <template id="crud-template">
+        <tr>
+            <td class="name"></td>
+            <td class="constelation"></td>
+            <td>
+                <button class="edit">Editar</button>
+                <button class="delete">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+    <script>
+        const d = document,
+            $sectiontable = d.querySelector(".crud"),
+            $table = d.querySelector('.crud-table'),
+            $form = d.querySelector('.crud-form'),
+            $title = d.querySelector('.crud-title'),
+            $template = d.getElementById('crud-template').content,
+            $fragment = d.createDocumentFragment();
+
+        const ajax = (options) => {
+            let { url, metodo, success, error, data } = options
+            const xhr = new XMLHttpRequest();
+
+            xhr.addEventListener('readystatechange', (e) => {
+                if (xhr.readyState !== 4) return;
+
+                if (xhr.status >= 200 && xhr.status <= 300) {
+                    let json = JSON.parse(xhr.responseText);
+                    success(json);
+                } else {
+                    let message = xhr.statusText || "Ocurrio un error";
+                    error(`Error ${xhr.status}: ${message}`)
+                }
+            });
+
+            xhr.open(metodo || "GET", url);
+            xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+            xhr.send(JSON.stringify(data));
+        }
+
+        const getAll = () => {
+            ajax({
+                url: "http://localhost:3000/santos",
+                metodo: "GET",
+                success: (res) => {
+                    console.log(res)
+                    res.forEach(element => {
+                        $template.querySelector('.name').textContent = element.nombre;
+                        $template.querySelector('.constelation').textContent = element.constelacion;
+                        $template.querySelector('.edit').dataset.id = element.id;
+                        $template.querySelector('.edit').dataset.name = element.nombre;
+                        $template.querySelector('.edit').dataset.constelacion = element.constelacion;
+                        $template.querySelector('.delete').dataset.id = element.id;
+                        //$template.querySelector('.edit').setAttribute("data-id",element.id);
+                        const $clone = $template.cloneNode(true);
+                        // const $clone = d.importNode($template,true); Este metodo tambien funciona, la diferencia 
+                        // radica en que importNode se usa tambien para hacer clonados de nodos de un documento externo
+                        // como los iframe
+                        $fragment.appendChild($clone);
+                    });
+                    $table.querySelector('tbody').appendChild($fragment);
+                },
+                error: (err) => {
+                    const $error = d.createElement('h4');
+                    $error.textContent = `${err}`;
+                    $sectiontable.insertAdjacentElement('afterend', $error);
+                },
+                data: null// Como es una peticion GET entonces no es necesario pasar el parametro de data
+            })
+        }
+
+        d.addEventListener('DOMContentLoaded', getAll);
+        d.addEventListener('click', (e) => {
+            if (e.target.matches('.edit')) {
+                $form.nombre.value = e.target.getAttribute("data-name");
+                $form.const.value = e.target.getAttribute("data-constelacion");
+                $form.id.value = e.target.getAttribute("data-id");
+                
+            }
+            if (e.target.matches('.delete')) {
+                ajax({
+                    url: `http://localhost:3000/santos/${e.target.getAttribute("data-id")}`,
+                    metodo: "DELETE",
+                    success: (res) => "",
+                    error: (err) => "",
+                })
+            }
+        })
+        d.addEventListener('submit', (e) => {
+            if (e.target === $form) {
+                e.preventDefault()
+                if (!e.target.id.value) {
+                    ajax({
+                        url: `http://localhost:3000/santos`,
+                        metodo: "POST",
+                        success: (res) => "",
+                        error: (err) => $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),
+                        data:{
+                            nombre: e.target.nombre.value,
+                            constelacion: e.target.const.value
+                        }
+                    })
+                } else {
+                    
+                    ajax({
+                        url: `http://localhost:3000/santos/${e.target.id.value}`,
+                        metodo: "PUT",
+                        success: (res) => /* location.reload() */"",
+                        error: (err) => $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),
+                        data: {
+                            nombre: e.target.nombre.value,
+                            constelacion: e.target.const.value
+                        }
+                    });
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

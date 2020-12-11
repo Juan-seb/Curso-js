@@ -1,0 +1,71 @@
+{
+  "santos": [
+    {
+      "nombre": "Gansito",
+      "constelacion": "Pegaso2",
+      "id": 18
+    },
+    {
+      "nombre": "Pajaro",
+      "constelacion": "Pegasitooooo",
+      "id": 19
+    },
+    {
+      "nombre": "Pajaro",
+      "constelacion": "Pegaso25",
+      "id": 20
+    },
+    {
+      "nombre": "Gansito",
+      "constelacion": "Dragón3",
+      "id": 21
+    }
+  ],
+  "dioses": [
+    {
+      "id": 3,
+      "nombre": "Hades",
+      "de": "Inframundo"
+    },
+    {
+      "id": 4,
+      "nombre": "Zeus",
+      "de": "Cielo"
+    },
+    {
+      "id": 5,
+      "nombre": "Ares",
+      "de": "Guerra"
+    },
+    {
+      "id": 7,
+      "nombre": "Pegasito",
+      "de": "Tierra"
+    },
+    {
+      "nombre": "Pajaro",
+      "de": "Bogota",
+      "id": 8
+    },
+    {
+      "nombre": "Gansito",
+      "de": "Olimpo",
+      "id": 9
+    },
+    {
+      "nombre": "Shiryu",
+      "de": "Bogota",
+      "id": 10
+    },
+    {
+      "nombre": "Hyoga",
+      "de": "Bogota",
+      "id": 11
+    },
+    {
+      "nombre": "Pajaro",
+      "de": "Bogota",
+      "id": 12
+    }
+  ]
+}
