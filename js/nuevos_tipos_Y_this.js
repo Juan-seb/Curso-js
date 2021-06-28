@@ -256,6 +256,7 @@ this.nombre="Contexto global";
 
 function imprimir() {
     console.log(this.nombre);
+    console.log(this)
 }
 
 imprimir();
@@ -264,6 +265,7 @@ const obj = {
     nombre : "Contexto objeto",
     impr() {
         console.log(this.nombre);
+        console.log(this)
     }
 }
 
@@ -295,6 +297,11 @@ function Persona(nombre){
 const Juan = new Persona("Juan");
 Juan();
 
+const contexto = () => {
+    console.log(this)
+}
+
+contexto()
  */
 
 // CALL, APPLY Y BIND

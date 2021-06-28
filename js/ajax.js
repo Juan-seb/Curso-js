@@ -90,6 +90,8 @@
             let res = await fetch("https://jsonplaceholder.typicode.com/users");
             // Aqui vamos a preguntar que si la peticion esta lista (ok) entonces en esa constante me vas a guardar la promesa
             // sino el flujo se ira al catch que tiene el objeto res
+            
+          
             const json = (res.ok) ? res.json() : Promise.reject(res),
                 text = await json;
             // La variable text me guardara el objeto js (array) y este actua como el segundo then de la promesa

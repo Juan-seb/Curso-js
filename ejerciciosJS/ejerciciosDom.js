@@ -20,6 +20,7 @@ import {submitForm} from './validaciones_form.js'
 import {storyTeller} from './storyTeller.js'
 
 document.addEventListener('DOMContentLoaded', (e) => {
+    
     hamburgerMenu(".btn__oculto", ".menu__main-oculto", ".menu__link");
     relojDigital(".botonHora", ".botonDetener", ".hora");
     alarmaSonora(".iniciarAlarma", ".detenerAlarma", ".audio");
