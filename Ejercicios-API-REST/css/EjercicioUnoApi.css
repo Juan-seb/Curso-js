@@ -1,0 +1,47 @@
+body{
+    font-size: 1.1rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.menu{
+    height: 3.2rem;
+    display: flex;
+    background-color: rgb(231, 136, 151);
+}
+
+.menu__img{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    margin: auto;
+    background-image: url('../../SPA/app/assets/favicon.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+}
+
+.menu__items{
+    margin-left: auto;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    margin: auto;
+    justify-content: flex-end;
+}
+
+.menu__items > a {
+    margin: auto 1.5rem;
+    font-size: 1.1rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.main{
+    width: 80%;
+    height: 80vw;
+    margin: 0 auto;
+}
+
+h2{
+    margin: 0;
+    color: red;
+}
